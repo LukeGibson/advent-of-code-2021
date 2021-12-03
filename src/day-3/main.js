@@ -30,10 +30,10 @@ let input = text.map(line => line.split('').map(Number));
 // console.log('answerA', parseInt(gamma, 2) * parseInt(epsilon, 2))
 
 // part 2
-let input2 = [...input];
-
-let o2; 
 let currDigit = 0;
+
+let input2 = [...input];
+let currDigit2 = 0;
 
 while (input.length > 1) {
   const transInput = _.zip.apply(_, input);
@@ -53,18 +53,11 @@ while (input.length > 1) {
     }
   });
 
-  if (count >= 0) {
-    input = input.filter((line, index) => oneIndexs.includes(index));
-  } else {
-    input = input.filter((line, index) => zeroIndexs.includes(index));
-  }
+  if (count >= 0) input = input.filter((line, index) => oneIndexs.includes(index));
+  else if (count < 0) input = input.filter((line, index) => zeroIndexs.includes(index));
 
   currDigit++;
 };
-
-
-let co2;
-let currDigit2 = 0;
 
 while (input2.length > 1) {
   const transInput = _.zip.apply(_, input2);
@@ -84,16 +77,13 @@ while (input2.length > 1) {
     }
   });
 
-  if (count >= 0) {
-    input2 = input2.filter((line, index) => zeroIndexs.includes(index));
-  } else {
-    input2 = input2.filter((line, index) => oneIndexs.includes(index));
-  }
+  if (count >= 0) input2 = input2.filter((line, index) => zeroIndexs.includes(index));
+  else if (count < 0) input2 = input2.filter((line, index) => oneIndexs.includes(index));
 
   currDigit2++;
 }; 
 
-o2 = parseInt(input.toString().replace(/,/g, ''), 2);
-co2 = parseInt(input2.toString().replace(/,/g, ''), 2);
+const o2 = parseInt(input.toString().replace(/,/g, ''), 2);
+const co2 = parseInt(input2.toString().replace(/,/g, ''), 2);
 
 console.log('answerB', o2 * co2)
