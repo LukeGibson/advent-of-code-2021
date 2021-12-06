@@ -1,10 +1,9 @@
 import fs from 'fs';
 
-const text = fs.readFileSync('./input.txt', 'utf-8').split(',');
-const input = text.map(num => Number(num));
+const input = fs.readFileSync('./input.txt', 'utf-8').split(',');
 
 let fishCounts = new Array(9).fill(0);
-input.forEach(fish => fishCounts[fish] += 1);
+input.forEach(fish => fishCounts[Number(fish)] += 1);
 
 for (let day=0; day<256; day++) {
   let newFishCounts = new Array(9).fill(0);
