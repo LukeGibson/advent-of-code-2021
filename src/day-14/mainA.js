@@ -29,4 +29,3 @@ let result = Math.max(...values) - Math.min(...values);
 
 console.log(charCounts);
 console.log('Answer A', result);
-
